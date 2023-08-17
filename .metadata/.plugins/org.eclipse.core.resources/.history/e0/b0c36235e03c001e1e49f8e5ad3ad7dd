@@ -1,0 +1,56 @@
+package Selenium_Manager;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Sample {
+	
+public static void main(String[] args)  {
+	
+	
+		/*
+		 * In previous days like selnium 3 for opening chrome browser we use to store chrome driver
+		   in that project and give the path of that chrome driver, like below
+		   
+		   System.setProperty("WebDriver.Chrome.Driver", "Path of Chrome Driver");
+		   
+		   After some days we come and execute that project it will not run and we have to upadte
+		   the chrome driver and path.
+		   
+		   "To overcome this problem some third party members have introduced some dependencies like
+		    WebDriverManager" from selenium-4.
+		    
+		    In this it it will automatically download latest browser depandencies and it will run the 
+		    project.
+		    
+		    This facility is already yhere is "cypress etc..." tools.
+		    
+		    It is third party library and that's why selenium team introduced one library calld
+		    "Selenium Manager" it is from "selenium 4.6.0".
+		    
+		    for this we can't use  "WebDriverManager.chromedriver().setup();" this statement.
+		    we diretly use this statement   "WebDriver driver = new ChromeDriver();"
+		  
+		 */
+	
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com");
+		
+		WebElement username = driver.findElement(By.id("email"));
+	
+		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
+		jsExecutor.executeScript("arguments[0].setAttribute('style','border:5px red solid;background:yellow');", username);
+		
+		/*
+		 * arguments[0] --> It is related to 1st argument i write username in that end of line
+		 * arguments[1] --> It is related to 2nd argument if we write it will applicable.
+		 */
+	}
+
+}

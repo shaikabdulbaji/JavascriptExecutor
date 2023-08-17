@@ -1,0 +1,54 @@
+package dHighlight_Operation;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SendingText {
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com");
+		
+		/*
+		 * This perform operation can be do in three types, they are :
+		 		1. border
+		 		2. background
+		 		3. border + background
+		 
+		 
+		 * border :
+		 	document.getElementById('email').style.border='10px red solid';
+			document.getElementById('email') --> To find the element 
+			style.border='10px red solid' --> To give the styles
+			2px,3px,10px etc.... --> It will give border thickness
+			red --> border has which colour
+			solid or dotted or dashed --> border line
+			
+		 * background : for background we can't do anything we can apply only colour.s
+		    document.getElementById('email').style.background='blue';
+		    document.getElementById('email') --> To find the element
+		    style.background='blue' --> To give background colour 
+		    style.background='red' --> To give background colour 
+		    In place of blue we can give any colour like black, yellow,orange etc..
+		 */
+		
+		//border
+//		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
+//		jsExecutor.executeScript("document.getElementById('email').style.border='10px red solid';");
+		
+		
+		//border
+		JavascriptExecutor jsExecutor = (JavascriptExecutor)driver;
+		jsExecutor.executeScript("document.getElementById('email').style.border='10px red solid';");
+		
+	}
+	
+
+}
